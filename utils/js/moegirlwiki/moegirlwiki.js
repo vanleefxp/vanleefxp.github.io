@@ -28,7 +28,7 @@
             const p_tb = doc.querySelector ( "#p-tb" );
             // move the "Tools" section forward
             doc.querySelector ( "#p-navigation" ).after ( p_tb );
-            const ul = p_tb.querySelector ( "#p-tb > .body > ul" )
+            const ul = p_tb.querySelector ( ".body > ul" );
             this.addTool = ( id, name, tooltip = null ) => {
                 const li = $ele ( "li" );
                 const a = $ele ( "a", { id: id, title: tooltip } );
