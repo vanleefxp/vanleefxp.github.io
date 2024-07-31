@@ -28,3 +28,7 @@ const $ele = ( name = "div", options = null ) => {
 
 const $text = doc.createTextNode.bind ( doc );
 const $frag = doc.createDocumentFragment.bind ( doc );
+
+const addExternalCSS = ( url ) => {
+    doc.head.append ( $ele ( "link", { href: url, rel: "stylesheet" } ) );
+}
