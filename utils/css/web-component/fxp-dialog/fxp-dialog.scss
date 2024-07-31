@@ -1,8 +1,4 @@
-body.prevent-scroll {
-    overflow: hidden;
-}
-
-dialog.fxp-plugin {
+:host {
     --shadow-color: rgb(0 0 0 / 25%);
     --fg-success: #00b42a;
     --bg-error: #e81123;
@@ -49,77 +45,6 @@ dialog.fxp-plugin {
         --bg-100:#fffefb;
         --bg-200:#f5f4f1;
         --bg-300:#cccbc8;
-    }
-
-    .variant_success {
-        color: var(--fg-success);
-    }
-
-    .popover {
-        display: none;
-        position: absolute;
-        border-radius: 5px;
-        padding: 20px;
-        background-color: var(--bg-200);
-        border: 1px solid var(--bg-300);
-        bottom: 20px;
-        right: 20px;
-        filter: drop-shadow(0 0 10px var(--shadow-color));
-
-        &.showing {
-            display: block;
-        }
-    }
-
-    .full-page-prompt {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        inline-size: 100%;
-        block-size: 100%;
-
-        & > .prompt-text {
-            font-size: 4em;
-            opacity: 50%;
-        }
-    }
-
-    i[class^="ri-"] {
-        font-size: 1.5em;
-    }
-
-    button {
-        background-color: transparent;
-    }
-
-    textarea {
-        background-color: var(--bg-200);
-
-        &:focus {
-            background-color: var(--bg-300);
-        }
-    }
-
-    :is(button, textarea, input) {
-        border: none;
-        color: inherit;
-        font-size: inherit;
-        font-family: inherit;
-        &:focus {
-            color: var(--text-100);
-            outline: none;
-        }
-    }
-
-    .tabs {
-        display: flex;
-
-        & > .tab {
-            min-inline-size: 80px;
-            padding: 10px 15px;
-            text-align: start;
-        }
     }
 
     & > .dialog-window {
@@ -187,3 +112,75 @@ dialog.fxp-plugin {
         }
     }
 }
+
+.variant_success {
+    color: var(--fg-success);
+}
+
+.popover {
+    display: none;
+    position: absolute;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: var(--bg-200);
+    border: 1px solid var(--bg-300);
+    bottom: 20px;
+    right: 20px;
+    filter: drop-shadow(0 0 10px var(--shadow-color));
+
+    &.showing {
+        display: block;
+    }
+}
+
+.full-page-prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    inline-size: 100%;
+    block-size: 100%;
+
+    & > .prompt-text {
+        font-size: 4em;
+        opacity: 50%;
+    }
+}
+
+i[class^="ri-"] {
+    font-size: 1.5em;
+}
+
+button {
+    background-color: transparent;
+}
+
+textarea {
+    background-color: var(--bg-200);
+
+    &:focus {
+        background-color: var(--bg-300);
+    }
+}
+
+:is(button, textarea, input) {
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    &:focus {
+        color: var(--text-100);
+        outline: none;
+    }
+}
+
+.tabs {
+    display: flex;
+
+    & > .tab {
+        min-inline-size: 80px;
+        padding: 10px 15px;
+        text-align: start;
+    }
+}
+
