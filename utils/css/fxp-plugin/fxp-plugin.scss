@@ -1,0 +1,189 @@
+body.prevent-scroll {
+    overflow: hidden;
+}
+
+dialog.fxp-plugin {
+    --shadow-color: rgb(0 0 0 / 25%);
+    --fg-success: #00b42a;
+    --bg-error: #e81123;
+
+    inline-size: 50%;
+    block-size: 75%;
+    box-sizing: border-box;
+    padding: 0;
+    border-radius: 5px;
+    border: none;
+    resize: both;
+    color: var(--text-200);
+    background-color: var(--bg-100);
+    filter: drop-shadow(0 0 30px var(--shadow-color));
+    user-select: none;
+    /*overflow: visible;*/
+
+    &::backdrop {
+        background-color: rgb(0 0 0 / 25%);
+        backdrop-filter: blur(3px);
+    }
+
+    &[data-color-mode="dark"] {
+        --primary-100:#1F3A5F;
+        --primary-200:#4d648d;
+        --primary-300:#acc2ef;
+        --accent-100:#3D5A80;
+        --accent-200:#cee8ff;
+        --text-100:#FFFFFF;
+        --text-200:#e0e0e0;
+        --bg-100:#0F1C2E;
+        --bg-200:#1f2b3e;
+        --bg-300:#374357;
+    }
+
+    &[data-color-mode="light"] {
+        --primary-100:#d4eaf7;
+        --primary-200:#b6ccd8;
+        --primary-300:#3b3c3d;
+        --accent-100:#71c4ef;
+        --accent-200:#00668c;
+        --text-100:#1d1c1c;
+        --text-200:#313d44;
+        --bg-100:#fffefb;
+        --bg-200:#f5f4f1;
+        --bg-300:#cccbc8;
+    }
+
+    .variant_success {
+        color: var(--fg-success);
+    }
+
+    .popover {
+        display: none;
+        position: absolute;
+        border-radius: 5px;
+        padding: 20px;
+        background-color: var(--bg-200);
+        border: 1px solid var(--bg-300);
+        bottom: 20px;
+        right: 20px;
+        filter: drop-shadow(0 0 10px var(--shadow-color));
+
+        &.showing {
+            display: block;
+        }
+    }
+
+    .full-page-prompt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        inline-size: 100%;
+        block-size: 100%;
+
+        & > .prompt-text {
+            font-size: 4em;
+            opacity: 50%;
+        }
+    }
+
+    i[class^="ri-"] {
+        font-size: 1.5em;
+    }
+
+    button {
+        background-color: transparent;
+    }
+
+    textarea {
+        background-color: var(--bg-200);
+
+        &:focus {
+            background-color: var(--bg-300);
+        }
+    }
+
+    :is(button, textarea, input) {
+        border: none;
+        color: inherit;
+        font-size: inherit;
+        font-family: inherit;
+        &:focus {
+            color: var(--text-100);
+            outline: none;
+        }
+    }
+
+    .tabs {
+        display: flex;
+
+        & > .tab {
+            min-inline-size: 80px;
+            padding: 10px 15px;
+            text-align: start;
+        }
+    }
+
+    & > .dialog-window {
+        display: grid;
+        grid-template-rows: 
+            [header] auto 
+            [content] 1fr 
+            [footer] auto;
+        block-size: 100%;
+
+        & > header {
+            grid-row: header;
+            border-radius: 5px 5px 0 0;
+        }
+
+        & > .content {
+            grid-row: content;
+            overflow: hidden;
+
+            & > .content-internal {
+                block-size: 100%;
+            }
+        }
+
+        & > footer {
+            grid-row: footer;
+            border-radius: 0 0 5px 5px;
+        }
+
+        & > :is(header, footer) {
+            display: grid;
+            grid-template-columns: 
+                [content] 1fr 
+                [buttons] auto;
+            grid-auto-flow: column;
+            background-color: var(--bg-300);
+
+            & > .content {
+                grid-column: content;
+                padding: 5px 15px;
+            }
+
+            & > .buttons {
+                grid-column: buttons;
+                display: grid;
+                grid-auto-flow: column;
+
+                & > button {
+                    min-inline-size: 40px;
+
+                    &:hover {
+                        background-color: var(--bg-200);
+                    }
+
+                    &:active {
+                        color: var(--text-100);
+                        background-color: var(--bg-100);
+                    }
+
+                    &.close:hover, &.close:active {
+                        background-color: var(--bg-error);
+                    }
+                }
+            }
+        }
+    }
+}
