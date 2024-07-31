@@ -81,4 +81,4 @@ class FXPDialog extends HTMLDialogElement {
     }
 }
 
-customElements.define ( "fxp-dialog", FXPDialog, { extends: "dialog" } );
+window.customElements.define ( "fxp-dialog", FXPDialog, { extends: "dialog" } );
