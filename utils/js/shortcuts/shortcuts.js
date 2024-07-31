@@ -38,3 +38,9 @@ const addExternalCSS = ( ...urls ) => {
     } );
 }
 
+/* export {
+    doc, 
+    $ele, $text, $frag, 
+    addExternalCSS,
+}; */
+
