@@ -1,0 +1,27 @@
+dialog.fxp-plugin {
+    &[data-color-mode="dark"] {
+        --primary-100:#2E8B57;
+        --primary-200:#61bc84;
+        --primary-300:#c6ffe6;
+        --accent-100:#8FBC8F;
+        --accent-200:#345e37;
+        --text-100:#FFFFFF;
+        --text-200:#e0e0e0;
+        --bg-100:#1E1E1E;
+        --bg-200:#2d2d2d;
+        --bg-300:#454545;
+    }
+
+    &[data-color-mode="light"] {
+        --primary-100:#e5efc7;
+        --primary-200:#d8dec2;
+        --primary-300:#728927;
+        --accent-100:#a4c639;
+        --accent-200:#416700;
+        --text-100:#1d1c1c;
+        --text-200:#313d44;
+        --bg-100:#fffefb;
+        --bg-200:#f5f4f1;
+        --bg-300:#cccbc8;
+    }
+}
