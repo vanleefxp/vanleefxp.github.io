@@ -55,21 +55,26 @@
         if ( this.isMoeSkin ) {
             // MoeSkin uses lazy image loading
             this.getPageImageURLs = ( ) => {
-                return new Set ( 
-                    Array.from ( doc.querySelectorAll ( "a.image > img" ) )
-                    .map ( ele => 
-                        this.#toOriginalImageURL ( new URL ( ele.dataset.lazySrc ) ) 
-                    )
-                );
+                const imgSet = new Set ( );
+                doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
+                    if ( ele.src != null ) {
+                        imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) );
+                    } else if ( ele.dataset.lazySrc != null ) {
+                        imgSet.add ( this.#toOriginalImageURL ( 
+                            new URL (  ele.dataset.lazySrc ) ) );
+                    }
+                } );
+                return imgSet;
             }
         } else {
             this.getPageImageURLs = ( ) => {
-                return new Set ( 
-                    Array.from ( doc.querySelectorAll ( "a.image > img" ) )
-                    .map ( ele => 
-                        this.#toOriginalImageURL ( new URL ( ele.src ) ) 
-                    )
-                );
+                const imgSet = new Set ( );
+                doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
+                    if ( ele.src != null ) { 
+                        imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) ); 
+                    }
+                } );
+                return imgSet;
             }
         }
         return this.getPageImageURLs ( );
