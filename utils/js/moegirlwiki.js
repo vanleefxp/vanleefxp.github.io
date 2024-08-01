@@ -40,4 +40,30 @@
         }
         return this.addTool ( id, name, tooltip );
     };
+
+    static #toOriginalImageURL ( thumbURL ) {
+        const path = thumbURL.pathname.split ( "/" );
+        path.pop ( ); path.shift ( );
+        const thumbIndex = path.findIndex ( item => item === "thumb" );
+        if ( thumbIndex >= 0 ) {
+            path.splice ( thumbIndex, 1 );
+        }
+        return new URL ( `${thumbURL.protocol}//${thumbURL.host}/${path.join ( "/" )}` );
+    }
+
+    static getPageImageURLs = ( ) => {
+        if ( this.isMoeSkin ) {
+            // MoeSkin uses lazy image loading
+            this.getPageImageURLs = ( ) => {
+                return Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
+                    this.#toOriginalImageURL ( new URL ( ele.dataset.lazySrc ) ) );
+            }
+        } else {
+            this.getPageImageURLs = ( ) => {
+                return Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
+                    this.#toOriginalImageURL ( new URL ( ele.src ) ) );
+            }
+        }
+        this.getPageImageURLs ( );
+    }
 }
