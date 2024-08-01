@@ -64,6 +64,6 @@
                     this.#toOriginalImageURL ( new URL ( ele.src ) ) );
             }
         }
-        this.getPageImageURLs ( );
+        return this.getPageImageURLs ( );
     }
 }
