@@ -55,13 +55,13 @@
         if ( this.isMoeSkin ) {
             // MoeSkin uses lazy image loading
             this.getPageImageURLs = ( ) => {
-                return Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
-                    this.#toOriginalImageURL ( new URL ( ele.dataset.lazySrc ) ) );
+                return new Set ( Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
+                    this.#toOriginalImageURL ( new URL ( ele.dataset.lazySrc ) ) ) );
             }
         } else {
             this.getPageImageURLs = ( ) => {
-                return Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
-                    this.#toOriginalImageURL ( new URL ( ele.src ) ) );
+                return new Set ( Array.from ( doc.querySelector ( "a.image > img" ) ).map ( ele => 
+                    this.#toOriginalImageURL ( new URL ( ele.src ) ) ) );
             }
         }
         return this.getPageImageURLs ( );
