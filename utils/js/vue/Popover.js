@@ -37,7 +37,3 @@ const Popover = {
         },
     },
 };
-
-module.exports = {
-    Popover,
-};

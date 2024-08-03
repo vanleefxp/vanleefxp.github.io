@@ -1,4 +1,3 @@
-const { Icon } = require ( "./Icon.js" );
 const colorMediaQuery = matchMedia ( "(prefers-color-scheme: light)" );
 
 const FXPDialog = {
@@ -75,6 +74,3 @@ const FXPDialog = {
     },
 };
 
-module.exports = {
-    FXPDialog,
-};
