@@ -50,8 +50,17 @@ dialog.fxp-dialog[data-color-mode=light] {
   --bg-200:#f5f4f1;
   --bg-300:#cccbc8;
 }
-dialog.fxp-dialog .variant_success {
+dialog.fxp-dialog .text-success {
   color: var(--bg-success);
+}
+dialog.fxp-dialog .bg-success {
+  background-color: var(--bg-success);
+}
+dialog.fxp-dialog .text-error {
+  color: var(--bg-error);
+}
+dialog.fxp-dialog .bg-error {
+  background-color: var(--bg-error);
 }
 dialog.fxp-dialog .popover {
   display: none;

@@ -51,8 +51,9 @@ dialog.fxp-dialog {
         --bg-300:#cccbc8;
     }
 
-    .variant_success {
-        color: var(--bg-success);
+    @each $variant in ( "success", "error" ) {
+        .text-#{$variant} { color: var(--bg-#{$variant}); }
+        .bg-#{$variant} { background-color: var(--bg-#{$variant}); }
     }
 
     .popover {
