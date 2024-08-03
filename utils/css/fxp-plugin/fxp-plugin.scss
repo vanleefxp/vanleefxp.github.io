@@ -95,6 +95,7 @@ dialog.fxp-dialog {
 
     textarea {
         background-color: var(--bg-200);
+        min-inline-size: 0;
 
         &:focus {
             background-color: var(--bg-300);

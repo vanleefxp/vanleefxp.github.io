@@ -87,6 +87,7 @@ dialog.fxp-dialog button {
 }
 dialog.fxp-dialog textarea {
   background-color: var(--bg-200);
+  min-inline-size: 0;
 }
 dialog.fxp-dialog textarea:focus {
   background-color: var(--bg-300);
@@ -124,6 +125,7 @@ dialog.fxp-dialog > .window > .main {
 }
 dialog.fxp-dialog > .window > .main > .content {
   block-size: 100%;
+  inline-size: 100%;
 }
 dialog.fxp-dialog > .window > .footer {
   grid-row: footer;
