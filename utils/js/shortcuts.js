@@ -13,3 +13,10 @@ const addExternalCSS = ( ...urls ) => {
     } );
 }
 
+const addExternalScript = ( ...urls ) => {
+    urls.forEach ( ( url ) => {
+        if ( $head.find ( `script[src="${url}"]` ).length == 0 ) {
+            $ ( `<script src="${url}"></script>` ).appendTo ( $head );
+        }
+    } )
+}
