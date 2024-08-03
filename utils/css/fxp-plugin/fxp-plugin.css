@@ -63,7 +63,6 @@ dialog.fxp-dialog .bg-error {
   background-color: var(--bg-error);
 }
 dialog.fxp-dialog .popover {
-  display: none;
   position: absolute;
   border-radius: 5px;
   padding: 20px;
@@ -72,9 +71,6 @@ dialog.fxp-dialog .popover {
   bottom: 20px;
   right: 20px;
   filter: drop-shadow(0 0 10px var(--shadow-color));
-}
-dialog.fxp-dialog .popover.showing {
-  display: block;
 }
 dialog.fxp-dialog .full-page-prompt {
   display: flex;

@@ -57,7 +57,6 @@ dialog.fxp-dialog {
     }
 
     .popover {
-        display: none;
         position: absolute;
         border-radius: 5px;
         padding: 20px;
@@ -66,10 +65,6 @@ dialog.fxp-dialog {
         bottom: 20px;
         right: 20px;
         filter: drop-shadow(0 0 10px var(--shadow-color));
-
-        &.showing {
-            display: block;
-        }
     }
 
     .full-page-prompt {
