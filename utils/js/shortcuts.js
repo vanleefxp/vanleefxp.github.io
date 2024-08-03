@@ -1,46 +1,15 @@
-const doc = document;
+// require: JQuery
 
-const $ele = ( name = "div", options = null ) => {
-    const ele = doc.createElement ( name, options );
-    if ( options != null ) {
-        delete options.is;
-        if ( options.hasOwnProperty ( "cls" ) ) {
-            const cls = options.cls;
-            if ( Array.isArray ( cls ) ) {
-                // classes passed as array
-                ele.classList.add ( ...cls );
-            }
-            else {
-                // classes passed as string
-                ele.classList.add ( ...cls.split ( /\s+/g ) );
-            }
-            delete options.cls;
-        }
-        if ( options.hasOwnProperty ( "data" ) ) {
-            // data set
-            Object.assign ( ele.dataset, options.data );
-            delete options.data;
-        }
-        Object.assign ( ele, options );
-    }
-    return ele;
-}
-
-const $text = doc.createTextNode.bind ( doc );
-const $frag = doc.createDocumentFragment.bind ( doc );
+const $html = $ ( document.documentElement );
+const $head = $ ( document.head );
+const $body = $ ( document.body );
 
 const addExternalCSS = ( ...urls ) => {
     urls.forEach ( ( url ) => {
-        if ( doc.head.querySelector ( `link[rel=stylesheet][href="${url}"]` ) == null ) {
+        if ( $head.find ( `link[rel=stylesheet][href="${url}"]` ).length === 0 ) {
             // Add only if the specified stylesheet is not present
-            doc.head.append ( $ele ( "link", { href: url, rel: "stylesheet" } ) );
+            $ ( `<link rel="stylesheet" href="${url}"/>` ).appendTo ( $head );
         }
     } );
 }
-
-/* export {
-    doc, 
-    $ele, $text, $frag, 
-    addExternalCSS,
-}; */
 

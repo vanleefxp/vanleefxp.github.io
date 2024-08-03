@@ -1,54 +1,47 @@
-/*import { doc, $ele } from "../shortcuts/shortcuts";*/
+// require: JQuery
 
-/*export*/ class MoegirlWiki {
-    static #isMoeSkin = doc.body.classList.contains ( "skin-moeskin" );
+class MoegirlWiki {
+    static #isMoeSkin = document.body.classList.contains ( "skin-moeskin" );
     static get isMoeSkin ( ) { return this.#isMoeSkin; }
 
-    static addTool = ( id, name, tooltip = null ) => {
+    static $addTool = ( ) => {
         if ( this.isMoeSkin ) {
-            const toolbar = doc.querySelector ( "#moe-global-toolbar.desktop-only" );
-            const p_tb = toolbar.querySelector ( "#p-tb" );
-            this.addTool = ( id, name, tooltip = null ) => {
-                const li = $ele ( "li", { 
-                    cls: "toolbar-link",
-                    data: { vF0c8232e: true },
-                } );
-                const a = $ele ( "a", { 
-                    id: id, 
-                    title: tooltip,
-                    data: { vF0c8232e: true },
-                } );
-                a.innerHTML = name;
-                li.append ( a );
-                p_tb.append ( li );
-                return a;
+            const $toolbar = $ ( "#moe-global-toolbar.desktop-only" );
+            const $p_tb = $toolbar.find ( "#p-tb" );
+            this.$addTool = ( ) => {
+                const $li = $ ( "<li>" )
+                    .addClass ( "toolbar-link" )
+                    .data ( { vF0c8232e: true } )
+                    .appendTo ( $p_tb );
+                return $li;
             }
         } else {
             // Vector
-            const p_tb = doc.querySelector ( "#p-tb" );
+            const $p_tb = $ ( "#p-tb" );
             // move the "Tools" section forward
-            doc.querySelector ( "#p-navigation" ).after ( p_tb );
-            const ul = p_tb.querySelector ( ".body > ul" );
-            this.addTool = ( id, name, tooltip = null ) => {
-                const li = $ele ( "li" );
-                const a = $ele ( "a", { id: id, title: tooltip } );
-                a.innerHTML = name;
-                li.append ( a );
-                ul.append ( li );
-                return a;
+            $ ( "#p-navigation" ).after ( $p_tb );
+            const $ul = $p_tb.find ( ".body > ul" );
+            this.$addTool = ( ) => {
+                const $li = $ ( "<li>" ).appendTo ( $ul );
+                return $li;
             }
         }
-        return this.addTool ( id, name, tooltip );
+        return this.$addTool ( );
     };
 
-    static #toOriginalImageURL ( thumbURL ) {
+    static addTool ( ) {
+        return this.$addTool ( ).get ( 0 );
+    }
+
+    static #toOriginalImageURL ( thumbSrc ) {
+        const thumbURL = new URL ( thumbSrc )
         const path = thumbURL.pathname.split ( "/" );
         path.pop ( ); path.shift ( );
         const thumbIndex = path.findIndex ( item => item === "thumb" );
         if ( thumbIndex >= 0 ) {
             path.splice ( thumbIndex, 1 );
         }
-        return new URL ( `${thumbURL.protocol}//${thumbURL.host}/${path.join ( "/" )}` );
+        return `${thumbURL.protocol}//${thumbURL.host}/${path.join ( "/" )}`;
     }
 
     static getPageImageURLs = ( ) => {
@@ -56,15 +49,14 @@
             // MoeSkin uses lazy image loading
             this.getPageImageURLs = ( ) => {
                 const imgSet = new Set ( );
-                doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
+                $ ( "a > img" ).each ( ( _, ele ) => {
                     if ( ele.src != null && ele.src.length > 0 ) {
-                        imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) );
+                        imgSet.add ( this.#toOriginalImageURL ( ele.src ) );
                     } else if ( 
                         ele.dataset.lazySrc != null && 
                         ele.dataset.lazySrc.length > 0 
                     ) {
-                        imgSet.add ( this.#toOriginalImageURL ( 
-                            new URL (  ele.dataset.lazySrc ) ) );
+                        imgSet.add ( this.#toOriginalImageURL ( ele.dataset.lazySrc ) );
                     }
                 } );
                 return imgSet;
@@ -72,9 +64,9 @@
         } else {
             this.getPageImageURLs = ( ) => {
                 const imgSet = new Set ( );
-                doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
+                $ ( "a > img" ).each ( ( _, ele ) => {
                     if ( ele.src != null && ele.src.length > 0 ) { 
-                        imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) ); 
+                        imgSet.add ( this.#toOriginalImageURL ( ele.src ) ); 
                     }
                 } );
                 return imgSet;
