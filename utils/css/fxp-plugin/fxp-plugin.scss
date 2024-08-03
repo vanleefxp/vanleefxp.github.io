@@ -2,9 +2,9 @@ body.prevent-scroll {
     overflow: hidden;
 }
 
-dialog.fxp-plugin {
+dialog.fxp-dialog {
     --shadow-color: rgb(0 0 0 / 25%);
-    --fg-success: #00b42a;
+    --bg-success: #00b42a;
     --bg-error: #e81123;
 
     inline-size: 50%;
@@ -52,7 +52,7 @@ dialog.fxp-plugin {
     }
 
     .variant_success {
-        color: var(--fg-success);
+        color: var(--bg-success);
     }
 
     .popover {
@@ -122,7 +122,7 @@ dialog.fxp-plugin {
         }
     }
 
-    & > .dialog-window {
+    & > .window {
         display: grid;
         grid-template-rows: 
             [header] auto 
@@ -130,26 +130,26 @@ dialog.fxp-plugin {
             [footer] auto;
         block-size: 100%;
 
-        & > header {
+        & > .header {
             grid-row: header;
             border-radius: 5px 5px 0 0;
         }
 
-        & > .content {
+        & > .main {
             grid-row: content;
             overflow: hidden;
 
-            & > .content-internal {
+            & > .content {
                 block-size: 100%;
             }
         }
 
-        & > footer {
+        & > .footer {
             grid-row: footer;
             border-radius: 0 0 5px 5px;
         }
 
-        & > :is(header, footer) {
+        & > :is(.header, .footer) {
             display: grid;
             grid-template-columns: 
                 [content] 1fr 

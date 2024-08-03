@@ -57,9 +57,12 @@
             this.getPageImageURLs = ( ) => {
                 const imgSet = new Set ( );
                 doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
-                    if ( ele.src != null ) {
+                    if ( ele.src != null && ele.src.length > 0 ) {
                         imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) );
-                    } else if ( ele.dataset.lazySrc != null ) {
+                    } else if ( 
+                        ele.dataset.lazySrc != null && 
+                        ele.dataset.lazySrc.length > 0 
+                    ) {
                         imgSet.add ( this.#toOriginalImageURL ( 
                             new URL (  ele.dataset.lazySrc ) ) );
                     }
@@ -70,7 +73,7 @@
             this.getPageImageURLs = ( ) => {
                 const imgSet = new Set ( );
                 doc.querySelectorAll ( "a.image > img" ).forEach ( ele => {
-                    if ( ele.src != null ) { 
+                    if ( ele.src != null && ele.src.length > 0 ) { 
                         imgSet.add ( this.#toOriginalImageURL ( new URL ( ele.src ) ) ); 
                     }
                 } );

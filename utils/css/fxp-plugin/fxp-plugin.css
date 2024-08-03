@@ -2,9 +2,9 @@ body.prevent-scroll {
   overflow: hidden;
 }
 
-dialog.fxp-plugin {
+dialog.fxp-dialog {
   --shadow-color: rgb(0 0 0 / 25%);
-  --fg-success: #00b42a;
+  --bg-success: #00b42a;
   --bg-error: #e81123;
   inline-size: 50%;
   block-size: 75%;
@@ -21,12 +21,12 @@ dialog.fxp-plugin {
           user-select: none;
   /*overflow: visible;*/
 }
-dialog.fxp-plugin::backdrop {
+dialog.fxp-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.25);
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
 }
-dialog.fxp-plugin[data-color-mode=dark] {
+dialog.fxp-dialog[data-color-mode=dark] {
   --primary-100:#1F3A5F;
   --primary-200:#4d648d;
   --primary-300:#acc2ef;
@@ -38,7 +38,7 @@ dialog.fxp-plugin[data-color-mode=dark] {
   --bg-200:#1f2b3e;
   --bg-300:#374357;
 }
-dialog.fxp-plugin[data-color-mode=light] {
+dialog.fxp-dialog[data-color-mode=light] {
   --primary-100:#d4eaf7;
   --primary-200:#b6ccd8;
   --primary-300:#3b3c3d;
@@ -50,10 +50,10 @@ dialog.fxp-plugin[data-color-mode=light] {
   --bg-200:#f5f4f1;
   --bg-300:#cccbc8;
 }
-dialog.fxp-plugin .variant_success {
-  color: var(--fg-success);
+dialog.fxp-dialog .variant_success {
+  color: var(--bg-success);
 }
-dialog.fxp-plugin .popover {
+dialog.fxp-dialog .popover {
   display: none;
   position: absolute;
   border-radius: 5px;
@@ -64,10 +64,10 @@ dialog.fxp-plugin .popover {
   right: 20px;
   filter: drop-shadow(0 0 10px var(--shadow-color));
 }
-dialog.fxp-plugin .popover.showing {
+dialog.fxp-dialog .popover.showing {
   display: block;
 }
-dialog.fxp-plugin .full-page-prompt {
+dialog.fxp-dialog .full-page-prompt {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,85 +75,85 @@ dialog.fxp-plugin .full-page-prompt {
   inline-size: 100%;
   block-size: 100%;
 }
-dialog.fxp-plugin .full-page-prompt > .prompt-text {
+dialog.fxp-dialog .full-page-prompt > .prompt-text {
   font-size: 4em;
   opacity: 50%;
 }
-dialog.fxp-plugin i[class^=ri-] {
+dialog.fxp-dialog i[class^=ri-] {
   font-size: 1.5em;
 }
-dialog.fxp-plugin button {
+dialog.fxp-dialog button {
   background-color: transparent;
 }
-dialog.fxp-plugin textarea {
+dialog.fxp-dialog textarea {
   background-color: var(--bg-200);
 }
-dialog.fxp-plugin textarea:focus {
+dialog.fxp-dialog textarea:focus {
   background-color: var(--bg-300);
 }
-dialog.fxp-plugin :is(button, textarea, input) {
+dialog.fxp-dialog :is(button, textarea, input) {
   border: none;
   color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
-dialog.fxp-plugin :is(button, textarea, input):focus {
+dialog.fxp-dialog :is(button, textarea, input):focus {
   color: var(--text-100);
   outline: none;
 }
-dialog.fxp-plugin .tabs {
+dialog.fxp-dialog .tabs {
   display: flex;
 }
-dialog.fxp-plugin .tabs > .tab {
+dialog.fxp-dialog .tabs > .tab {
   min-inline-size: 80px;
   padding: 10px 15px;
   text-align: start;
 }
-dialog.fxp-plugin > .dialog-window {
+dialog.fxp-dialog > .window {
   display: grid;
   grid-template-rows: [header] auto [content] 1fr [footer] auto;
   block-size: 100%;
 }
-dialog.fxp-plugin > .dialog-window > header {
+dialog.fxp-dialog > .window > .header {
   grid-row: header;
   border-radius: 5px 5px 0 0;
 }
-dialog.fxp-plugin > .dialog-window > .content {
+dialog.fxp-dialog > .window > .main {
   grid-row: content;
   overflow: hidden;
 }
-dialog.fxp-plugin > .dialog-window > .content > .content-internal {
+dialog.fxp-dialog > .window > .main > .content {
   block-size: 100%;
 }
-dialog.fxp-plugin > .dialog-window > footer {
+dialog.fxp-dialog > .window > .footer {
   grid-row: footer;
   border-radius: 0 0 5px 5px;
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) {
+dialog.fxp-dialog > .window > :is(.header, .footer) {
   display: grid;
   grid-template-columns: [content] 1fr [buttons] auto;
   grid-auto-flow: column;
   background-color: var(--bg-300);
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .content {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .content {
   grid-column: content;
   padding: 5px 15px;
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons {
   grid-column: buttons;
   display: grid;
   grid-auto-flow: column;
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons > button {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons > button {
   min-inline-size: 40px;
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons > button:hover {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons > button:hover {
   background-color: var(--bg-200);
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons > button:active {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons > button:active {
   color: var(--text-100);
   background-color: var(--bg-100);
 }
-dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons > button.close:hover, dialog.fxp-plugin > .dialog-window > :is(header, footer) > .buttons > button.close:active {
+dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons > button.close:hover, dialog.fxp-dialog > .window > :is(.header, .footer) > .buttons > button.close:active {
   background-color: var(--bg-error);
 }
