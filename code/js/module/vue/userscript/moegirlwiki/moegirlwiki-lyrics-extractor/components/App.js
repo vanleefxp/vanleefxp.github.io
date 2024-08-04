@@ -15,7 +15,7 @@ export default {
     <fxp-dialog ref="dialog" class="mg-dialog" id="dialog_mg-lyrics">
         <!-- Dialog Header -->
         <template v-slot:header-content>
-            萌娘百科歌词提取助手
+            <div>萌娘百科歌词提取助手</div>
         </template>
         <template v-slot:header-buttons>
             <button @click="openGitHubPage">
@@ -33,7 +33,7 @@ export default {
                     <lyrics-box v-for="(lyricsText, j) in lyricsGroup" 
                         :content="lyricsText"
                         @lyricsCopy="showCopiedPopover">
-                        #{{ i + 1 }} {{ j > 0 ? "译文" : "原文" }}
+                        <div>#{{ i + 1 }} {{ j > 0 ? "译文" : "原文" }}</div>
                     </lyrics-box>
                 </div>
             </div>

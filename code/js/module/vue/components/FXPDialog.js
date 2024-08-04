@@ -8,7 +8,8 @@ export default {
     <dialog ref="dialog" 
             class="fxp-dialog" 
             :data-color-mode="colorMode" 
-            auto-focus="">
+            auto-focus
+            @close="recoverScroll">
         <div class="window">
             <!-- Dialog Header -->
             <div class="header">
@@ -49,16 +50,19 @@ export default {
     } ),
 
     methods: {
-        show ( ) {
-            this.$refs.dialog.showModal ( );
+        preventScroll ( ) {
             document.body.classList.add ( "prevent-scroll" );
         },
-
-        close ( ) {
-            this.$refs.dialog.close ( );
+        recoverScroll ( ) {
             document.body.classList.remove ( "prevent-scroll" );
         },
-
+        show ( ) {
+            this.$refs.dialog.showModal ( );
+            this.preventScroll ( );
+        },
+        close ( ) {
+            this.$refs.dialog.close ( );
+        },
         __updateColorMode ( ) {
             this.colorMode = colorMediaQuery.matches ? "light" : "dark";
         }

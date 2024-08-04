@@ -160,6 +160,8 @@ dialog.fxp-dialog {
             & > .content {
                 grid-column: content;
                 padding: 5px 15px;
+                display: flex;
+                align-items: center;
             }
 
             & > .buttons {

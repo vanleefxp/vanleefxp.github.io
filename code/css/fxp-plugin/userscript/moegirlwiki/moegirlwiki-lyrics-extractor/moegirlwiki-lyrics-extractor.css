@@ -36,17 +36,17 @@ dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group 
   scroll-snap-stop: always;
   filter: drop-shadow(0 0 20px var(--shadow-color));
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box {
+dialog#dialog_mg-lyrics .lyrics-box {
   border-radius: 5px;
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > textarea {
+dialog#dialog_mg-lyrics .lyrics-box > textarea {
   resize: none;
   padding: 20px;
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > .lyrics-header {
+dialog#dialog_mg-lyrics .lyrics-box > .header {
   background-image: linear-gradient(to right, var(--primary-100), var(--primary-200));
   min-block-size: 40px;
   color: var(--primary-300);
@@ -54,21 +54,22 @@ dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group 
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > .lyrics-header > .lyrics-header-text {
+dialog#dialog_mg-lyrics .lyrics-box > .header > .content {
   font-size: 1.5em;
   font-weight: 700;
   padding: 5px 15px;
+  align-items: center;
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > .lyrics-header > button {
+dialog#dialog_mg-lyrics .lyrics-box > .header > button {
   min-inline-size: 40px;
   font-size: 1.25em;
   color: var(--primary-300);
   background-color: transparent;
   border: none;
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > .lyrics-header > button:hover {
+dialog#dialog_mg-lyrics .lyrics-box > .header > button:hover {
   background-color: rgba(0, 0, 0, 0.25);
 }
-dialog#dialog_mg-lyrics > .window > .main > .content > .preview > .lyrics-group > .lyrics-box > .lyrics-header > button:active {
+dialog#dialog_mg-lyrics .lyrics-box > .header > button:active {
   background-color: rgba(0, 0, 0, 0.5);
 }

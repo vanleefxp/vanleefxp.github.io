@@ -3,8 +3,8 @@ import { Icon } from "../../../../components/assembly.js";
 export default {
     template: /* html */ `
     <div class="lyrics-box">
-        <div class="lyrics-header">
-            <div class="lyrics-header-text">
+        <div class="header">
+            <div class="content">
                 <slot></slot>
             </div>
             <button class="copy" @click="copyLyrics">

@@ -15,7 +15,7 @@ class AddResource {
     ).map ( ele => ele.href ) );
     static #js = new Set ( Array.from ( 
         document.querySelectorAll ( "script[src]" ) 
-    ).map ( ele => ele.href ) );
+    ).map ( ele => ele.src ) );
 
     static CSS ( ...urls ) {
         const doc = document;
