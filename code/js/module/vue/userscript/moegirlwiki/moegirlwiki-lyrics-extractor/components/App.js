@@ -1,7 +1,7 @@
 // require: jQuery
 
-import { Icon, Popover, FXPDialog, FullPagePrompt } from "../../../../components/assembly";
-import { LyricsBox } from "./LyricsBox";
+import { Icon, Popover, FXPDialog, FullPagePrompt } from "../../../../components/assembly.js";
+import { LyricsBox } from "./LyricsBox.js";
 
 const GITHUB_REPO_URL = "https://github.com/vanleefxp/MoegirlWikiLyricsExtractor";
 

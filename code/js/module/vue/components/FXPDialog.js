@@ -1,4 +1,4 @@
-import { Icon } from "./Icon";
+import { Icon } from "./Icon.js";
 
 const colorMediaQuery = matchMedia ( "(prefers-color-scheme: light)" );
 

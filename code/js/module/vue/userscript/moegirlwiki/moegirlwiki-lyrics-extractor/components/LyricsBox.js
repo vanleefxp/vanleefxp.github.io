@@ -1,4 +1,4 @@
-import { Icon } from "../../../../components/assembly";
+import { Icon } from "../../../../components/assembly.js";
 
 export default {
     template: /* html */ `
