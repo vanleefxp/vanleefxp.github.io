@@ -150,6 +150,7 @@ dialog.fxp-dialog {
         }
 
         & > :is(.header, .footer) {
+            min-block-size: 1.8em;
             display: grid;
             grid-template-columns: 
                 [content] 1fr 

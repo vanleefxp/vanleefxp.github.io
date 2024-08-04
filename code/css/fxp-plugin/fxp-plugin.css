@@ -138,6 +138,7 @@ dialog.fxp-dialog > .window > .footer {
   border-radius: 0 0 5px 5px;
 }
 dialog.fxp-dialog > .window > :is(.header, .footer) {
+  min-block-size: 1.8em;
   display: grid;
   grid-template-columns: [content] 1fr [buttons] auto;
   grid-auto-flow: column;
