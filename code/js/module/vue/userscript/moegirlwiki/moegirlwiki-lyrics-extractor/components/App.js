@@ -45,7 +45,7 @@ export default {
         </template>
         <!-- Dialog Footer -->
         <template v-slot:footer-content>
-            <div v-if="lyricsCount > 0">共发现 <data>{{ lyricsCount }}</data> 段歌词</full-page-prompt>
+            <div v-if="lyricsCount > 0">共发现 <data>{{ lyricsCount }}</data> 段歌词</div>
             <div v-else>当前页面未发现可提取歌词</div>
         </template>
         <!-- Popovers -->
@@ -82,7 +82,7 @@ export default {
     },
 
     methods: {
-        getPureLyricsText ( node ) {
+        __getPureLyricsText ( node ) {
             if ( node instanceof Text ) {
                 return node.textContent;
             } else if ( node instanceof HTMLElement ) {
@@ -94,7 +94,7 @@ export default {
                 )` ) ) {
                     let output = "";
                     node.childNodes.forEach ( childNode => {
-                        output += getPureLyricsText ( childNode );
+                        output += this.__getPureLyricsText ( childNode );
                     } );
                     return output;
                 }
@@ -102,7 +102,7 @@ export default {
             return "";
         },
 
-        extractLyrics ( $lyricsBlock ) {
+        __extractLyrics ( $lyricsBlock ) {
             const output = [ ];
             $lyricsBlock.find ( ".Lyrics-line" ).each (
                 ( _, $lyricsLine ) => {
@@ -110,7 +110,7 @@ export default {
                     $lyricsLine.children( ).each ( ( _, $lyricsTextBlock ) => {
                         if ( !$lyricsTextBlock.is ( ".Lyrics-column-wrapped" ) ) {
                             if ( output [ i ] == null ) { output.push ( "" ); }
-                            output [ i ] += getPureLyricsText ( $lyricsTextBlock.get ( 0 ) ) + "\n";
+                            output [ i ] += this.__getPureLyricsText ( $lyricsTextBlock.get ( 0 ) ) + "\n";
                             i++;
                         }
                     } );
@@ -119,15 +119,15 @@ export default {
             return output;
         },
 
-        getPageLyrics ( ) {
+        __getPageLyrics ( ) {
             $ ( ".Lyrics" ).each ( ( _, $lyricsBlock ) => {
-                this.foundLyrics.push ( extractLyrics ( $lyricsBlock ) );
+                this.foundLyrics.push ( this.__extractLyrics ( $lyricsBlock ) );
             } );
         },
 
         openDialog ( ) {
             if ( !this.initialized ) { 
-                getPageLyrics (  );
+                this.__getPageLyrics ( );
                 this.initialized = true;
             }
             this.$refs.dialog.show ( );
