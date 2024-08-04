@@ -37,10 +37,13 @@ class AddResource {
         const target = toBody ? doc.body : doc.head;
         const scriptType = asModule ? "module" : "text/javascript";
         urls.forEach ( ( url ) => {
-            const script = doc.createElement ( "script" );
-            script.src = url;
-            script.type = scriptType;
-            target.append ( script );
+            if ( !this.#js.has ( url ) ) {
+                this.#js.add ( url );
+                const script = doc.createElement ( "script" );
+                script.src = url;
+                script.type = scriptType;
+                target.append ( script );
+            }
         } );
         return this;
     }

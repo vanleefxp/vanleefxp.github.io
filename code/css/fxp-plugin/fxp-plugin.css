@@ -6,6 +6,7 @@ dialog.fxp-dialog {
   --shadow-color: rgb(0 0 0 / 25%);
   --bg-success: #00b42a;
   --bg-error: #e81123;
+  font-size: 1rem;
   inline-size: 50%;
   block-size: 75%;
   box-sizing: border-box;

@@ -1,3 +1,6 @@
+dialog.fxp-dialog {
+  text-shadow: none;
+}
 dialog.fxp-dialog.mg-dialog[data-color-mode=dark] {
   --primary-100:#2E8B57;
   --primary-200:#61bc84;

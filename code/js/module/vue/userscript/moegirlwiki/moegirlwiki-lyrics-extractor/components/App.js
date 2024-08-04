@@ -86,12 +86,12 @@ export default {
             if ( node instanceof Text ) {
                 return node.textContent;
             } else if ( node instanceof HTMLElement ) {
-                if ( node.matches ( `:not(
+                if ( !node.matches ( `
                         style, rt,
                         span.template-ruby-hidden,
                         span.Utawari-lyric-tab,
                         sup.reference
-                )` ) ) {
+                ` ) ) {
                     let output = "";
                     node.childNodes.forEach ( childNode => {
                         output += this.__getPureLyricsText ( childNode );
@@ -105,12 +105,12 @@ export default {
         __extractLyrics ( $lyricsBlock ) {
             const output = [ ];
             $lyricsBlock.find ( ".Lyrics-line" ).each (
-                ( _, $lyricsLine ) => {
-                    let i = 0; // TODO
-                    $lyricsLine.children( ).each ( ( _, $lyricsTextBlock ) => {
-                        if ( !$lyricsTextBlock.is ( ".Lyrics-column-wrapped" ) ) {
+                ( _, lyricsLine ) => {
+                    let i = 0;
+                    $ ( lyricsLine ).children( ).each ( ( _, lyricsTextBlock ) => {
+                        if ( !lyricsTextBlock.matches ( ".Lyrics-column-wrapped" ) ) {
                             if ( output [ i ] == null ) { output.push ( "" ); }
-                            output [ i ] += this.__getPureLyricsText ( $lyricsTextBlock.get ( 0 ) ) + "\n";
+                            output [ i ] += this.__getPureLyricsText ( lyricsTextBlock ) + "\n";
                             i++;
                         }
                     } );
@@ -120,8 +120,8 @@ export default {
         },
 
         __getPageLyrics ( ) {
-            $ ( ".Lyrics" ).each ( ( _, $lyricsBlock ) => {
-                this.foundLyrics.push ( this.__extractLyrics ( $lyricsBlock ) );
+            $ ( ".Lyrics" ).each ( ( _, lyricsBlock ) => {
+                this.foundLyrics.push ( this.__extractLyrics ( $ ( lyricsBlock ) ) );
             } );
         },
 
