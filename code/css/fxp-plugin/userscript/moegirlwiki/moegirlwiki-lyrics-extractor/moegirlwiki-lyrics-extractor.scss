@@ -1,0 +1,96 @@
+dialog#dialog_mg-lyrics {
+    & > .window {
+        & > .main {
+            & > .content {
+                display: grid;
+                grid-template-rows: 
+                    [description] auto
+                    [tabs] auto 
+                    [preview] 1fr;
+                & > .description {
+                    grid-row: description;
+                    padding: 20px 15px;
+                    display: none;
+                }
+            
+                & > .tabs {
+                    grid-row: tabs;
+                    display: none;
+                }
+            
+                & > .preview {
+                    grid-row: preview;
+                    /*background-image: 
+                        url("https://www.transparenttextures.com/patterns/grunge-wall.png")
+                        url(https://www.toptal.com/designers/subtlepatterns/uploads/green_cup.png);*/
+                    padding: 0;
+                    scroll-snap-type: y mandatory;
+                    inline-size: 100%;
+                    overflow: auto;
+                    scrollbar-gutter: stable;
+                    box-shadow: inset 0 0 15px var(--shadow-color);
+
+                    & > .lyrics-group {
+                        display: grid;
+                        padding: 40px;
+                        grid-auto-flow: column;
+                        column-gap: 20px;
+                        block-size: 100%;
+                        inline-size: 100%;
+                        box-sizing: border-box;
+                        scroll-snap-align: center;
+                        scroll-snap-stop: always;
+                        filter: drop-shadow(0 0 20px var(--shadow-color));
+
+                        & > .lyrics-box {
+                            border-radius: 5px;
+                            overflow: hidden;
+                            display: grid;
+                            grid-template-rows: auto 1fr;
+
+                            & > textarea {
+                                resize: none;
+                                padding: 20px;
+                            }
+
+                            & > .lyrics-header {
+                                background-image: linear-gradient(
+                                    to right, 
+                                    var(--primary-100), 
+                                    var(--primary-200)
+                                );
+                                min-block-size: 40px;
+                                color: var(--primary-300);
+                                display: grid;
+                                grid-auto-flow: column;
+                                grid-template-columns: 1fr auto;
+
+                                & > .lyrics-header-text {
+                                    font-size: 1.5em;
+                                    font-weight: 700;
+                                    padding: 5px 15px;
+                                }
+
+                                & > button {
+                                    min-inline-size: 40px;
+                                    font-size: 1.25em;
+                                    color: var(--primary-300);
+                                    background-color: transparent;
+                                    border: none;
+
+                                    &:hover {
+                                        background-color: rgba(0 0 0 / 0.25);
+                                    }
+
+                                    &:active {
+                                        background-color: rgba(0, 0, 0, 0.5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

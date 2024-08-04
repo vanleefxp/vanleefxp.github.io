@@ -7,6 +7,7 @@
  * Also, sometimes using `@require` to add certain external scripts, such as Vue, will cause an
  * error. In this case you will need to add the script by manipulating the DOM structure.  
 */
+
 class AddResource {
     // register all the existing stylesheets and scripts
     static #css = new Set ( Array.from ( 
@@ -28,20 +29,41 @@ class AddResource {
                 head.append ( link );
             }
         } );
+        return this;
     }
 
-    static JS ( isModule, ...urls ) {
+    static #addScript ( urls, toBody = false, asModule = false ) {
         const doc = document;
-        const head = doc.head;
-        const scriptType = isModule ? "module" : "text/javascript";
+        const target = toBody ? doc.body : doc.head;
+        const scriptType = asModule ? "module" : "text/javascript";
         urls.forEach ( ( url ) => {
-            if ( !this.#js.has ( url ) ) {
-                const script = doc.createElement ( "script" );
-                script.src = url;
-                script.type = scriptType;
-                head.append ( script );
-            }
+            const script = doc.createElement ( "script" );
+            script.src = url;
+            script.type = scriptType;
+            target.append ( script );
         } );
+        return this;
+    }
+
+    static JS ( ...urls ) {
+        this.#addScript ( urls, false, false );
+        return this;
+    }
+
+    static {
+        this.JS.asModule = ( ...urls ) => {
+            this.#addScript ( urls, false, true );
+            return this;
+        };
+        this.JS.toBody = ( ...urls ) => {
+            this.#addScript ( urls, true, false );
+            return this;
+        }
+
+        this.JS.toBody.asModule = ( ...urls ) => {
+            this.#addScript ( urls, true, true );
+            return this;
+        }
     }
 }
 
