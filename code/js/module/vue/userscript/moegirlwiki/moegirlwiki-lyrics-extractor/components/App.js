@@ -3,6 +3,8 @@
 import { Icon, Popover, FXPDialog, FullPagePrompt } from "../../../../components/assembly";
 import { LyricsBox } from "./LyricsBox";
 
+const GITHUB_REPO_URL = "https://github.com/vanleefxp/MoegirlWikiLyricsExtractor";
+
 export default {
     template: /*html*/ `
     <a id="t-lyrics-extractor" 
