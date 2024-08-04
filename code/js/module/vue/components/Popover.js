@@ -1,4 +1,4 @@
-const Popover = {
+export default {
     name: "popover",
     template: /* html */ `
     <div class="popover" v-show="open" @click="close">

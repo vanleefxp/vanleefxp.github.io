@@ -1,6 +1,8 @@
+import { Icon } from "./Icon";
+
 const colorMediaQuery = matchMedia ( "(prefers-color-scheme: light)" );
 
-const FXPDialog = {
+export default {
     name: "fxp-dialog",
     template: /* html */ `
     <dialog ref="dialog" 

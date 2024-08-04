@@ -1,6 +1,6 @@
-// require: JQuery
+// require: jQuery
 
-class MoegirlWiki {
+export default class MoegirlWiki {
     static #isMoeSkin = document.body.classList.contains ( "skin-moeskin" );
     static get isMoeSkin ( ) { return this.#isMoeSkin; }
 
