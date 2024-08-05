@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css");
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap");
 @keyframes jelly {
   from {
     transform: scale(1, 1);
@@ -38,6 +40,7 @@ dialog.fxp-dialog {
   --bg-success: #00b42a;
   --bg-error: #e81123;
   font-size: 1rem;
+  font-family: "Ysabeau Office", "LXGW Wenkai Screen";
   inline-size: 50%;
   block-size: 75%;
   padding: 0;
@@ -107,6 +110,7 @@ dialog.fxp-dialog .popover {
   border: 1px solid var(--bg-300);
   bottom: 20px;
   right: 20px;
+  max-inline-size: 50%;
   filter: drop-shadow(0 0 10px var(--shadow-color));
 }
 dialog.fxp-dialog .full-page-prompt {
