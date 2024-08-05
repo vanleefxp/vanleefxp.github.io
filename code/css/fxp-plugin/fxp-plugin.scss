@@ -1,17 +1,28 @@
-body.prevent-scroll {
-    overflow: hidden;
+@keyframes jelly {
+    from { transform: scale(1, 1); }
+    30% { transform: scale(1.25, 0.75); }
+    40% { transform: scale(0.75, 1.25); }
+    50% { transform: scale(1.15, 0.85); }
+    65% { transform: scale(0.95, 1.05); }
+    75% { transform: scale(1.05, 0.95); }
+    to { transform: scale(1, 1); }
 }
+
+body.prevent-scroll { overflow: hidden; }
 
 dialog.fxp-dialog {
     --shadow-color: rgb(0 0 0 / 25%);
     --bg-success: #00b42a;
     --bg-error: #e81123;
 
+    &, & * {
+        box-sizing: border-box;
+    }
+
     font-size: 1rem;
 
     inline-size: 50%;
     block-size: 75%;
-    box-sizing: border-box;
     padding: 0;
     border-radius: 5px;
     border: none;
@@ -163,6 +174,12 @@ dialog.fxp-dialog {
                 padding: 5px 15px;
                 display: flex;
                 align-items: center;
+
+                &, & * {
+                    overflow: hidden;
+                    word-break: keep-all;
+                    text-overflow: ellipsis;
+                }
             }
 
             & > .buttons {

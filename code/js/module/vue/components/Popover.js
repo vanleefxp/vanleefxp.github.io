@@ -19,7 +19,10 @@ export default {
     },
 
     props: {
-        displayTime: Number,
+        displayTime: {
+            type: Number,
+            default: 1500,
+        },
     },
 
     methods: {
