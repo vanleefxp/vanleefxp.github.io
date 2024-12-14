@@ -34,14 +34,18 @@ export default class MoegirlWiki {
     }
 
     static #toOriginalImageURL ( thumbSrc ) {
-        const thumbURL = new URL ( thumbSrc )
-        const path = thumbURL.pathname.split ( "/" );
-        path.pop ( ); path.shift ( );
-        const thumbIndex = path.findIndex ( item => item === "thumb" );
-        if ( thumbIndex >= 0 ) {
-            path.splice ( thumbIndex, 1 );
+        if ( thumbSrc.contains ( "thumb" ) ) {
+            const thumbURL = new URL ( thumbSrc )
+            const path = thumbURL.pathname.split ( "/" );
+            path.pop ( ); path.shift ( );
+            const thumbIndex = path.findIndex ( item => item === "thumb" );
+            if ( thumbIndex >= 0 ) {
+                path.splice ( thumbIndex, 1 );
+            }
+            return `${thumbURL.protocol}//${thumbURL.host}/${path.join ( "/" )}`;
+        } else {
+            return thumbSrc;
         }
-        return `${thumbURL.protocol}//${thumbURL.host}/${path.join ( "/" )}`;
     }
 
     static getPageImageURLs = ( ) => {
