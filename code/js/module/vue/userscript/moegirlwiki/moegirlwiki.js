@@ -20,7 +20,7 @@ export default class MoegirlWiki {
             const $p_tb = $ ( "#p-tb" );
             // move the "Tools" section forward
             $ ( "#p-navigation" ).after ( $p_tb );
-            const $ul = $p_tb.find ( ".body > ul" );
+            const $ul = $p_tb.find ( "ul" );
             this.$addTool = ( ) => {
                 const $li = $ ( "<li>" ).appendTo ( $ul );
                 return $li;
